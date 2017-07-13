@@ -20,6 +20,7 @@ tr.Insert("Test")
 if tr.Find("Test") {
         // Found
 }
+tr.Remove("Test")
 ```
 
 ## License

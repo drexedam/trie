@@ -46,3 +46,7 @@ func (d *defaultTrie) Find(s string) bool {
 
 	return node.Value() == s
 }
+
+func (d *defaultTrie) Remove(s string) {
+	d.root.Remove(s)
+}

@@ -6,4 +6,5 @@ func Example() {
 	if tr.Find("Test") {
 		// Found
 	}
+	tr.Remove("Test")
 }
