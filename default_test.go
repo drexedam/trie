@@ -54,7 +54,6 @@ func TestDefaultTrie_Remove(t *testing.T) {
 		t.Error("Removed too much (Tetris)")
 	}
 
-
 	if !tr.Find("Tester") {
 		t.Error("Removed too muc (Tester)")
 	}
@@ -87,7 +86,6 @@ func TestDefaultTrie_Remove2(t *testing.T) {
 	if !tr.Find("Test") {
 		t.Error("Removed too much (Test)")
 	}
-
 
 	if !tr.Find("Tester") {
 		t.Error("Removed too muc (Tester)")
