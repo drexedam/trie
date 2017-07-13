@@ -50,3 +50,16 @@ func (d *defaultTrie) Find(s string) bool {
 func (d *defaultTrie) Remove(s string) {
 	d.root.Remove(s)
 }
+
+func (d *defaultTrie) HasPrefix(s string) bool {
+	node := d.root
+	for _, r := range s {
+		if newnode := node.Child(r); newnode != nil {
+			node = newnode
+		} else {
+			return false
+		}
+	}
+
+	return true
+}

@@ -7,6 +7,8 @@ type Trie interface {
 	Insert(s string)
 	// Find searches for the given value
 	Find(s string) bool
+	// HasPrefix returns if the tree contains the given prefix
+	HasPrefix(s string) bool
 	// Remove removes an entry if it exists
 	Remove(s string)
 }
