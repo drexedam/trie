@@ -1,6 +1,8 @@
 package trie
 
-import "testing"
+import (
+	"testing"
+)
 
 func TestDefaultTrie(t *testing.T) {
 	tr := New()

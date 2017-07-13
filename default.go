@@ -1,5 +1,7 @@
 package trie
 
+import "io"
+
 // defaultTrie is a basic implementation of trie
 type defaultTrie struct {
 	root treeNode
@@ -62,4 +64,8 @@ func (d *defaultTrie) HasPrefix(s string) bool {
 	}
 
 	return true
+}
+
+func (d *defaultTrie) PrettyPrint(w io.Writer, indent string) {
+	d.root.PrettyPrint(w, indent)
 }

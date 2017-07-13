@@ -1,5 +1,11 @@
 package trie
 
+import (
+	"io"
+	"fmt"
+	"strings"
+)
+
 // treeNode provides an interface for node implementations
 type treeNode interface {
 	// Child returns the child node for the given rune or nil if else
@@ -12,6 +18,8 @@ type treeNode interface {
 	Value() string
 	// SetValue sets the value of the node
 	SetValue(s string)
+	// PrettyPrint writes the tree to the given Writer
+	PrettyPrint(w io.Writer, indent string)
 }
 
 // newMapNode creates a new mapNode
@@ -60,6 +68,26 @@ func (mn *mapNode) Remove(s string) {
 		if value.remove(mn, runes, 1) {
 			delete(mn.children, runes[0])
 		}
+	}
+}
+
+func (mn *mapNode) PrettyPrint(w io.Writer, indent string) {
+
+	if indent == "" {
+		indent = ". "
+	}
+	mn.prettyPrint(w, "", 0, indent)
+}
+
+func (mn *mapNode) prettyPrint(w io.Writer, key string, indentation int, indent string) {
+	if key == "" {
+		key = "root"
+	}
+
+	fmt.Fprintf(w, strings.Repeat(indent, indentation)+"%v\n", key)
+
+	for r, child := range mn.children {
+		child.prettyPrint(w, string(r), indentation+1, indent)
 	}
 }
 

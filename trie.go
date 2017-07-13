@@ -1,6 +1,8 @@
 // Package trie provides implementations of trie trees
 package trie
 
+import "io"
+
 // Trie provides a basic interface for any tree implementation
 type Trie interface {
 	// Insert inserts a string into the tree
@@ -11,6 +13,9 @@ type Trie interface {
 	HasPrefix(s string) bool
 	// Remove removes an entry if it exists
 	Remove(s string)
+	// PrettyPrint outputs the tree to the given Writer
+	// "" as indent will be replaced by the default value (". ")
+	PrettyPrint(w io.Writer, indent string)
 }
 
 // New creates a new instance of the naive default implementation using
